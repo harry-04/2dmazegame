@@ -5,30 +5,47 @@ using UnityEngine;
 public class OdinMove : MonoBehaviour
 {
     public Rigidbody2D rb;
-    float moveSpeed = 1f;
+    public float moveSpeed = 1f;
+    float horizontal;
+    float vertical;
+    float moveLimiter = 0.7f;
     
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        //Gives a value between =1 and 1
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        if(horizontal == -1)
         {
-            rb.velocity = new Vector2(0, 2);
+            transform.localScale = new Vector3(-1,1,1);
         }
 
-        if(Input.GetKey(KeyCode.D))
+        if(horizontal == 1)
         {
-            rb.velocity = new Vector2(+moveSpeed, rb.velocity.y);
+            transform.localScale = new Vector3(1,1,1);
         }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-        }
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (horizontal != 0 && vertical !=0) // check for diagonal movement
+        {
+            //limit movement diagonally, so you move at 70% speed
+            horizontal *= moveLimiter;
+            vertical *= moveLimiter;
+        }
+
+
+
+        rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
     }
 }
