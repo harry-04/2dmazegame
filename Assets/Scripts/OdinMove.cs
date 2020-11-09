@@ -9,7 +9,9 @@ public class OdinMove : MonoBehaviour
     float horizontal;
     float vertical;
     float moveLimiter = 0.7f;
-    
+    public Animator animator;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,13 +26,24 @@ public class OdinMove : MonoBehaviour
 
         if(horizontal == -1)
         {
-            transform.localScale = new Vector3(-1,1,1);
+            animator.SetBool("walk_left", true);
+        }
+        else
+        {
+            animator.SetBool("walk_left", false);
         }
 
         if(horizontal == 1)
         {
             transform.localScale = new Vector3(1,1,1);
+            animator.SetBool("walk_right", true);
         }
+        else
+        {
+            animator.SetBool("walk_right", false);
+        }
+      
+        
 
         
     }
@@ -48,4 +61,5 @@ public class OdinMove : MonoBehaviour
 
         rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
     }
+
 }
