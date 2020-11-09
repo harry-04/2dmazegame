@@ -29,5 +29,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
     }
-    
+
+    // OnCollisionEnter2d(Collision2d collision)
+
 }
