@@ -26,6 +26,7 @@ public class OdinMove : MonoBehaviour
 
         if(horizontal == -1)
         {
+            transform.localScale = new Vector3(-1, 1, 1);
             animator.SetBool("walk_left", true);
         }
         else
