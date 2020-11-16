@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     public int maxHealth = 2;
     int currentHealth;
+
+    public int EnemiesKilled;
     
     void Start()
     {
@@ -22,7 +24,7 @@ public class Enemy : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Die();
+            Die();       
         }
     }
 
@@ -40,10 +42,13 @@ public class Enemy : MonoBehaviour
         //Disable the enemy
         this.enabled = false;
 
+        EnemiesKilled += 1; 
 
 
 
     }
+
+       
 
    
 }

@@ -6,10 +6,12 @@ public class OdinMove : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float moveSpeed = 1f;
-    float horizontal;
-    float vertical;
+    public float horizontal;
+    public float vertical;
     float moveLimiter = 0.7f;
     public Animator animator;
+
+    
 
 
     void Start()
@@ -49,6 +51,8 @@ public class OdinMove : MonoBehaviour
         
     }
 
+    
+
     private void FixedUpdate()
     {
         if (horizontal != 0 && vertical !=0) // check for diagonal movement
@@ -62,5 +66,7 @@ public class OdinMove : MonoBehaviour
 
         rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
     }
+
+    
 
 }

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ZombieTag
+  - HealthPotion
+  - HealthPotion2
+  - HealthPotion3
   layers:
   - Default
   - TransparentFX
