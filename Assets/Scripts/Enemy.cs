@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour
         //disable rigidbody collision
         GetComponent<Collider2D>().enabled = false;
 
-
         //Disable the enemy
         this.enabled = false;
 
